@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8E4849B1-23D0-4BCE-9ECC-A1AE74F0A8EB}</ProjectGuid>
+    <RootNamespace>wavepotential_small</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.5.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;WIN64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <CudaCompile>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;WIN64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>cufft.lib;cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <CudaCompile>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <CodeGeneration>compute_86,sm_86</CodeGeneration>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CudaCompile Include="cuBoundSelector.cu" />
+    <CudaCompile Include="cuConvergence.cu" />
+    <CudaCompile Include="cudaGlobal.cu" />
+    <CudaCompile Include="cudaMath.cu" />
+    <CudaCompile Include="cudaUtil.cu" />
+    <CudaCompile Include="cuDivLocalProject.cu" />
+    <CudaCompile Include="cuDivLocalProject3D.cu" />
+    <CudaCompile Include="cuDst.cu" />
+    <CudaCompile Include="cuDst3D.cu" />
+    <CudaCompile Include="cuFastSweeping.cu" />
+    <CudaCompile Include="cuGetInnerProduct.cu" />
+    <CudaCompile Include="cuGradient.cu" />
+    <CudaCompile Include="cuMemoryManager.cu" />
+    <CudaCompile Include="cuMultigrid2D.cu" />
+    <CudaCompile Include="cuMultigrid3D.cu" />
+    <CudaCompile Include="cuMultigridFrac2D.cu" />
+    <CudaCompile Include="cuMultigridFrac3D.cu" />
+    <CudaCompile Include="cuParallelSweep3D.cu" />
+    <CudaCompile Include="cuProlongate3D.cu" />
+    <CudaCompile Include="cuProlongation2D.cu" />
+    <CudaCompile Include="cuRestrict3D.cu" />
+    <CudaCompile Include="cuRestriction2D.cu" />
+    <CudaCompile Include="cuSolidLevelSet2D.cu" />
+    <CudaCompile Include="cuSolidLevelSet3D.cu" />
+    <CudaCompile Include="cuWaveletPotentialRecover2D.cu" />
+    <CudaCompile Include="cuWaveletPotentialRecover3D.cu" />
+    <CudaCompile Include="cuWeightedJacobi.cu" />
+    <CudaCompile Include="cuWeightedJacobi3D.cu" />
+    <CudaCompile Include="cuWHHDForward.cu" />
+    <CudaCompile Include="Interpolation.cu" />
+    <CudaCompile Include="kernel.cu" />
+    <CudaCompile Include="PrefixSum.cu" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cuBoundSelector.cuh" />
+    <ClInclude Include="cuConvergence.cuh" />
+    <ClInclude Include="cudaConstant.cuh" />
+    <ClInclude Include="cudaGlobal.cuh" />
+    <ClInclude Include="cudaMath.cuh" />
+    <ClInclude Include="cudaUtil.cuh" />
+    <ClInclude Include="cuDivLocalProject.cuh" />
+    <ClInclude Include="cuDivLocalProject3D.cuh" />
+    <ClInclude Include="cuDst.cuh" />
+    <ClInclude Include="cuDst3D.cuh" />
+    <ClInclude Include="cuFastSweeping.cuh" />
+    <ClInclude Include="cuGetInnerProduct.cuh" />
+    <ClInclude Include="cuGradient.cuh" />
+    <ClInclude Include="cuMemoryManager.cuh" />
+    <ClInclude Include="cuMultigrid2D.cuh" />
+    <ClInclude Include="cuMultigrid3D.cuh" />
+    <ClInclude Include="cuMultigridFrac2D.cuh" />
+    <ClInclude Include="cuMultigridFrac3D.cuh" />
+    <ClInclude Include="cuParallelSweep3D.cuh" />
+    <ClInclude Include="cuProlongate3D.cuh" />
+    <ClInclude Include="cuProlongation2D.cuh" />
+    <ClInclude Include="cuRestrict3D.cuh" />
+    <ClInclude Include="cuRestriction2D.cuh" />
+    <ClInclude Include="cuSolidLevelSet2D.cuh" />
+    <ClInclude Include="cuSolidLevelSet3D.cuh" />
+    <ClInclude Include="cuWaveletCompute.cuh" />
+    <ClInclude Include="cuWaveletPotentialRecover2D.cuh" />
+    <ClInclude Include="cuWaveletPotentialRecover3D.cuh" />
+    <ClInclude Include="cuWaveletUtil.h" />
+    <ClInclude Include="cuWeightedJacobi.cuh" />
+    <ClInclude Include="cuWeightedJacobi3D.cuh" />
+    <ClInclude Include="cuWHHDForward.cuh" />
+    <ClInclude Include="cuWHHD_Export.h" />
+    <ClInclude Include="DivL0Matrix.h" />
+    <ClInclude Include="DoubleUseDefine.h" />
+    <ClInclude Include="happly.h" />
+    <ClInclude Include="HelperUtil.h" />
+    <ClInclude Include="helper_cuda.h" />
+    <ClInclude Include="helper_string.h" />
+    <ClInclude Include="Interpolation.cuh" />
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="PrefixSum.cuh" />
+    <ClInclude Include="StreamInitial.h" />
+    <ClInclude Include="TestLocalProjection.h" />
+    <ClInclude Include="TimeCounter.h" />
+    <ClInclude Include="Utils.h" />
+    <ClInclude Include="VelocitiesInit.h" />
+    <ClInclude Include="VelocityInterpolationType.h" />
+    <ClInclude Include="WaveletTypes.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cuWaveletUtil.cpp" />
+    <ClCompile Include="DivL0Matrix.cpp" />
+    <ClCompile Include="Log.cpp" />
+    <ClCompile Include="StreamInitial.cpp" />
+    <ClCompile Include="TestLocalProjection.cpp" />
+    <ClCompile Include="TimeCounter.cpp" />
+    <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="WaveletTypes.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.5.targets" />
+  </ImportGroup>
+</Project>
