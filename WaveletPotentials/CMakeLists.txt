@@ -12,9 +12,9 @@ file(GLOB wavepotential_SRC
 )
 
 # Add source to this project's executable.
-add_executable (wavepotential_cmake 
+add_executable (WaveletPotentials
     ${wavepotential_SRC})
 
 # TODO: Add tests and install targets if needed.
 # link cuda libs
-target_link_libraries(wavepotential_cmake PRIVATE CUDA::cufft)
+target_link_libraries(WaveletPotentials PRIVATE CUDA::cufft)

@@ -4,7 +4,7 @@
 cmake_minimum_required (VERSION 3.8)
 
 # project ("wavepotential_cmake")
-project ("wavepotential_cmake" LANGUAGES CUDA CXX)
+project ("WaveletPotentials" LANGUAGES CUDA CXX)
 
 find_package(CUDAToolkit REQUIRED)
 
@@ -17,5 +17,5 @@ SET(CMAKE_CUDA_ARCHITECTURES ${CUDA_ARCH_LIST})
 # enable_language(CUDA)
 
 # Include sub-projects.
-add_subdirectory ("wavepotential_cmake")
+add_subdirectory ("WaveletPotentials")
 
